@@ -1,4 +1,5 @@
-var CouchClient = require('couch-client');
+var CouchClient = require('couch-client'),
+    Config = require('./config')();
 
 module.exports = function(app){
 
@@ -13,7 +14,8 @@ module.exports = function(app){
 
 	app.post('/stories',function(req,res){
 		
-		var Troubadour = CouchClient("http://hernan:gong696stew773@dynamicprogrammer.couchone.com/troubadour");
+//		var Troubadour = CouchClient("http://hernan:gong696stew773@dynamicprogrammer.couchone.com/troubadour");
+		var Troubadour = CouchClient(Config.couchConn);
 		var data = req.body.story;
 		var story = {_id:data.feature,feature:data.feature,description:data.description};
 		Troubadour.save(story,function(err,doc){
