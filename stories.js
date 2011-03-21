@@ -14,7 +14,6 @@ module.exports = function(app){
 
 	app.post('/stories',function(req,res){
 		
-//		var Troubadour = CouchClient("http://hernan:gong696stew773@dynamicprogrammer.couchone.com/troubadour");
 		var Troubadour = CouchClient(Config.couchConn);
 		var data = req.body.story;
 		var story = {_id:data.feature,feature:data.feature,description:data.description};
