@@ -37,7 +37,7 @@ app.get('/', function(req, res){
   });
 });
 
-require('./stories')(app);
+require('./routes/stories')(app);
 
 // Only listen on $ node app.js
 
