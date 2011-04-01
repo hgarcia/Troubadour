@@ -1,0 +1,14 @@
+{{#total}}
+<span class="todo-count">
+  <span class="number">{{remaining}}</span>
+  <span class="word">{{#remaining == 1}} 'item' {{/remaining == 1}}{{#remaining > 1}} 'items' {{/remaining > 1}}%></span> left.
+</span>
+{{/total}}
+{{#done}}
+<span class="todo-clear">
+  <a href="#">
+    Clear <span class="number-done">{{done}}</span>
+    completed <span class="word-done">{{#done == 1}} 'item' {{/done == 1}}{{#done > 1}}   'items' {{/done > 1}}%></span>
+  </a>
+</span>
+{{/done}}
