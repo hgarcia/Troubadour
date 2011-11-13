@@ -1,0 +1,24 @@
+{
+  "name": "Troubadour",
+  "version": "0.1.0",
+  "author": "Hernan Garcia <hernan@dynamicprogrammer.com>",
+  "bin": { "troubadour": "./bin/cli.js" },
+  "main": "./lib/troubadour.js",
+  "homepage" : "https://github.com/hgarcia/Troubadour",
+  "description": "",
+  "keywords": ["projects", "web", "mvc", "express"],
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/hgarcia/Troubadour.git"
+  },
+  "preferGlobal": true,
+  "engines": {"node": ">= 0.4.11" },
+  "dependencies":{
+  },
+  "devDependencies": {
+    "cucumis" : ""
+  },
+  "scripts": {
+    "test" : "vows specs/*.js --spec"
+  }
+}
