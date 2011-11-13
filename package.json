@@ -17,7 +17,8 @@
   },
   "devDependencies": {
     "cucumis" : "",
-    "eyes": ""
+    "eyes": "",
+    "vows": ""
   },
   "scripts": {
     "test" : "cucumis"
