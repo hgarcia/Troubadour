@@ -66,13 +66,17 @@ html {
     line-height: 1.5em;
   }
   nav ul li{
-    box-shadow: 5px 0 3px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: rgba(0, 0, 0, 0.2) 5px 0 3px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.2) 5px 0 3px;
+    -o-box-shadow: rgba(0, 0, 0, 0.2) 5px 0 3px;
+    box-shadow: rgba(0, 0, 0, 0.2) 5px 0 3px ;
     margin-left: 30px;
     margin-right: 30px;
     padding: 5px 20px;
+    cursor: pointer;
   }
 #todoapp {
-  width: 480px;
+  width: 1050px;
   margin: 40px auto 40px;
   background: white;
   padding: 20px;
@@ -83,9 +87,8 @@ html {
 }
   #todoapp h1 {
     font-size: 36px;
-    font-weight: bold;
-    text-align: center;
-    padding: 20px 0 30px 0;
+    font-weight: bold;  
+    padding: 0 0 30px 5px;
     line-height: 1;
   }
 

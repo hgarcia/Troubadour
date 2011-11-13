@@ -6,6 +6,38 @@
 // Load the application once the DOM is ready, using `jQuery.ready`:
 $(function(){
 
+
+  // Project Model
+  // ----------
+
+  // Our basic **Project** model has `name`, `description`, `due date`, `deleted` and `completed` attributes.
+  window.Project = Backbone.Model.extend({
+
+    // If you don't provide a project, one will be provided for you.
+    DEFAULT: "default project...",
+
+    // Ensure that each todo created has `name`.
+    initialize: function() {
+      if (!this.get('name')) {
+        this.set({'name': this.DEFAULT});
+      }
+    },
+
+    // Toggle the `deleted` state of this project.
+    toggle: function() {
+      this.save({deleted: !this.get('deleted')});
+    },
+
+    // Remove this Project from *Storage* and delete its view.
+    clear: function() {
+      this.destroy();
+      this.view.remove();
+    }
+
+  });
+
+
+
   // Todo Model
   // ----------
 
@@ -17,17 +49,17 @@ $(function(){
 
     // Ensure that each todo created has `content`.
     initialize: function() {
-      if (!this.get("content")) {
-        this.set({"content": this.EMPTY});
+      if (!this.get('content')) {
+        this.set({'content': this.EMPTY});
       }
     },
 
     // Toggle the `done` state of this todo item.
     toggle: function() {
-      this.save({done: !this.get("done")});
+      this.save({done: !this.get('done')});
     },
 
-    // Remove this Todo from *localStorage* and delete its view.
+    // Remove this Todo from *Storage* and delete its view.
     clear: function() {
       this.destroy();
       this.view.remove();
@@ -35,18 +67,52 @@ $(function(){
 
   });
 
+
+  // Project Collection
+  // ---------------
+
+  // The collection of projects is backed by *Storage* in a remote server.
+  window.ProjectList = Backbone.Collection.extend({
+
+    // Reference to this collection's model.
+    model: Project,
+
+    // Filter down the list of all todo items that are finished.
+    done: function() {
+      return this.filter(function(todo){ return todo.get('done'); });
+    },
+
+    // Filter down the list to only todo items that are still not finished.
+    remaining: function() {
+      return this.without.apply(this, this.done());
+    },
+
+    // We keep the Todos in sequential order, despite being saved by unordered
+    // GUID in the database. This generates the next order number for new items.
+    nextOrder: function() {
+      if (!this.length) return 1;
+      return this.last().get('order') + 1;
+    },
+
+    // Todos are sorted by their original insertion order.
+    comparator: function(todo) {
+      return todo.get('order');
+    }
+
+  });
+
+  // Create our global collection of **Projects**.
+  window.Projects = new ProjectList;
+
+
   // Todo Collection
   // ---------------
 
-  // The collection of todos is backed by *localStorage* instead of a remote
-  // server.
+  // The collection of todos is backed by *Storage* in a remote server.
   window.TodoList = Backbone.Collection.extend({
 
     // Reference to this collection's model.
     model: Todo,
-
-    // Save all of the todo items under the `"todos"` namespace.
-    localStorage: new Store("todos"),
 
     // Filter down the list of all todo items that are finished.
     done: function() {

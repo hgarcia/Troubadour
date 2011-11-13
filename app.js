@@ -3,8 +3,11 @@
  */
 
 var express = require('express');
+var form = require('connect-form');
 
-var app = module.exports = express.createServer();
+var app = module.exports = express.createServer(form({
+
+}));
 
 // Configuration
 
@@ -21,11 +24,11 @@ app.configure(function(){
 });
 
 app.configure('development', function(){
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
+  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
 
 app.configure('production', function(){
-  app.use(express.errorHandler()); 
+  app.use(express.errorHandler());
 });
 
 // Routes
