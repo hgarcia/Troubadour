@@ -16,9 +16,10 @@
   "dependencies":{
   },
   "devDependencies": {
-    "cucumis" : ""
+    "cucumis" : "",
+    "eyes": ""
   },
   "scripts": {
-    "test" : "vows specs/*.js --spec"
+    "test" : "cucumis"
   }
 }
