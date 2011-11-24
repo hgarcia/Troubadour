@@ -15,3 +15,10 @@ FEATURE: Troubadour
 		And I pass a first arg "default_project"
 		When I call run
 		Then should create a new "default_project" folder
+
+	Scenario: Create a worker project
+		Given I have a troubadour
+		And I pass a first arg "worker"
+		And a second arg "worker_project"
+		When I call run
+		Then should create a new "worker_project" folder
