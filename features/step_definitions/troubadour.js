@@ -10,6 +10,7 @@ var fs = {
 
 Steps.Given(/^I have a troubadour$/, function (ctx) {
   Troubadour = require('../../lib/troubadour').Troubadour;
+  args = [];
   ctx.done();
 });
 
@@ -18,7 +19,7 @@ Steps.Given(/^I pass a first arg "([^"]*?)"$/, function (ctx, arg1) {
   ctx.done();
 });
 
-Steps.Given(/^I second arg "([^"]*?)"$/, function (ctx, arg1) {
+Steps.Given(/^a second arg "([^"]*?)"$/, function (ctx, arg1) {
   args.push(arg1);
   ctx.done();
 });
