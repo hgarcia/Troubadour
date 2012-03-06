@@ -1,0 +1,18 @@
+
+=INFO REPORT==== 5-Mar-2012::23:39:51 ===
+Starting Boss in development mode....
+
+=INFO REPORT==== 5-Mar-2012::23:39:51 ===
+Starting master services on 'troubadour@hernan-Inspiron-6000'
+
+=INFO REPORT==== 5-Mar-2012::23:39:51 ===
+Loading routes from "/home/hernan/Projects/troubadour/priv/troubadour.routes" ....
+
+=ERROR REPORT==== 5-Mar-2012::23:40:15 ===
+GET /greeting/hello [troubadour] 404 48ms
+
+=INFO REPORT==== 5-Mar-2012::23:41:40 ===
+GET /greeting/hello [troubadour] 200 96ms
+
+=INFO REPORT==== 5-Mar-2012::23:42:08 ===
+GET /greeting/hello [troubadour] 200 41ms
